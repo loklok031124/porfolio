@@ -72,4 +72,20 @@ const remove = async (req, res) => {
     });
   }
 };
-export default { create, userByID, read, list, remove, update };
+
+const deleteAllUsers = async (req, res) => {
+  try {
+    const result = await User.deleteMany({});
+    res.status(200).json({
+      success: true,
+      message: `${result.deletedCount} Users deleted successfully`
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting Users',
+      error: error.message
+    });
+  }
+};
+export default { create, userByID, read, list, remove, update, deleteAllUsers };

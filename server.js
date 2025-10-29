@@ -7,17 +7,21 @@
  */
 
 import express from 'express';
+import bodyParser from "body-parser";
 import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import compress from "compression";
+import helmet from "helmet";
 
 // Import routes
 import contactRoutes from './server/routes/contact.routes.js';
 import projectRoutes from './server/routes/project.routes.js';
 import qualificationRoutes from './server/routes/qualification.routes.js';
-import userRoutes from './server/routes/user.routes.js';
 import authRoutes from './server/routes/auth.routes.js';
 import config from './config/config.js';
+import userRoutes from "./server/routes/user.routes.js";
+
 
 const app = express();
 
@@ -29,6 +33,10 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(compress());
+app.use(helmet());
 
 // MongoDB Connection
 const connectDB = async () => {
@@ -49,14 +57,6 @@ connectDB();
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to Portfolio Application Backend API',
-    version: '1.0.0',
-    endpoints: {
-      contacts: '/api/contacts',
-      projects: '/api/projects',
-      qualifications: '/api/qualifications',
-      users: '/api/users',
-      auth: '/api/auth'
-    }
   });
 });
 
@@ -64,8 +64,9 @@ app.get('/', (req, res) => {
 app.use('/api/contacts', contactRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/qualifications', qualificationRoutes);
-app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use("/", userRoutes);
+app.use("/", authRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -83,6 +84,15 @@ app.use((req, res) => {
     success: false,
     message: 'Route not found'
   });
+});
+
+app.use((err, req, res, next) => {
+  if (err.name === "UnauthorizedError") {
+    res.status(401).json({ error: err.name + ": " + err.message });
+  } else if (err) {
+    res.status(400).json({ error: err.name + ": " + err.message });
+    console.log(err);
+  }
 });
 
 // Start server
