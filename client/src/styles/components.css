@@ -104,7 +104,7 @@
 /* Navigation Styles */
 .nav-desktop {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .nav-mobile {
@@ -120,6 +120,8 @@
   border-radius: 0.5rem;
   transition: all 0.2s ease;
   color: #6b7280;
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -245,6 +247,77 @@
 
 .animate-slide-up {
   animation: slideUp 0.8s ease-out;
+}
+
+/* Message Styles */
+.message {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.message.success {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.message.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.form-input.error {
+  border-color: #ef4444;
+}
+
+.form-input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Dashboard Styles */
+.admin-dashboard {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.dashboard-header {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+/* Grid utility for lists */
+.grid.gap-4 {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .nav-link svg {
+    display: none;
+  }
+  
+  .nav-link {
+    gap: 0;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .username {
+    display: none;
+  }
 }
 
 /* Responsive Navigation */

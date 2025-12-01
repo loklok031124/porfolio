@@ -1,72 +1,73 @@
-import mongoose from "mongoose";
-import crypto from "crypto";
-const UserSchema = new mongoose.Schema({
+/**
+ * File: user.model.js - UPDATED WITH ROLE
+ */
+
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true,
-    required: "Name is required",
+    required: [true, 'Name is required'],
+    trim: true
   },
   email: {
     type: String,
+    required: [true, 'Email is required'],
+    unique: true,
     trim: true,
-    unique: "Email already exists",
-    match: [/.+\@.+\..+/, "Please fill a valid email address"],
-    required: "Email is required",
+    lowercase: true,
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email']
+  },
+  password: {
+    type: String,
+    required: [true, 'Password is required'],
+    minlength: [6, 'Password must be at least 6 characters']
+  },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
   },
   created: {
     type: Date,
-    default: Date.now,
+    default: Date.now
   },
   updated: {
     type: Date,
-    default: Date.now,
-  },
-  hashed_password: {
-    type: String,
-    required: "Password is required",
-  },
-  salt: String,
+    default: Date.now
+  }
+}, {
+  timestamps: true
 });
-UserSchema.virtual("password")
-  .set(function (password) {
-    this._password = password;
-    this.salt = this.makeSalt();
-    this.hashed_password = this.encryptPassword(password);
-    //this.hashed_password = password;
-  })
-  .get(function () {
-    return this._password;
-  });
-UserSchema.path("hashed_password").validate(function (v) {
-  if (this._password && this._password.length < 6) {
-    this.invalidate("password", "Password must be at least 6 characters.");
-  }
-  if (this.isNew && !this._password) {
-    this.invalidate("password", "Password is required");
-  }
-}, null);
 
-UserSchema.methods = {
-  authenticate: function (plainText) {
-    return this.encryptPassword(plainText) === this.hashed_password;
-  },
-  encryptPassword: function (password) {
-    if (!password) return "";
-    try {
-      return crypto
-        .createHmac("sha1", this.salt)
-        .update(password)
-        .digest("hex");
-    } catch (err) {
-      return "";
-    }
-  },
-  makeSalt: function () {
-    return Math.round(new Date().valueOf() * Math.random()) + "";
-  },
+// Hash password before saving
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    this.updated = Date.now();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Compare password method
+userSchema.methods.comparePassword = async function(candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
 };
 
-const User = mongoose.model('User', UserSchema);
+// Remove password from JSON response
+userSchema.methods.toJSON = function() {
+  const obj = this.toObject();
+  delete obj.password;
+  return obj;
+};
+
+const User = mongoose.model('User', userSchema);
 
 export default User;
-

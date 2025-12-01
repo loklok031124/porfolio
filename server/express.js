@@ -1,3 +1,4 @@
+/*
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -10,7 +11,7 @@ import authRoutes from "./routes/auth.routes.js";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/", userRoutes);
+app.use('/api/users', userRoutes);
 app.use("/", authRoutes);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,3 +30,4 @@ app.use((err, req, res, next) => {
 });
 
 export default app;
+*/

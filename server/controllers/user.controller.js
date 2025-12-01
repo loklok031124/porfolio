@@ -1,91 +1,142 @@
-import User from "../models/user.model.js";
-import extend from "lodash/extend.js";
-import errorHandler from "./error.controller.js";
-const create = async (req, res) => {
-  const user = new User(req.body);
-  try {
-    await user.save();
-    return res.status(200).json({
-      message: "Successfully signed up!",
-    });
-  } catch (err) {
-    return res.status(400).json({
-      error: errorHandler.getErrorMessage(err),
-    });
-  }
-};
-const list = async (req, res) => {
-  try {
-    let users = await User.find().select("name email updated created");
-    res.json(users);
-  } catch (err) {
-    return res.status(400).json({
-      error: errorHandler.getErrorMessage(err),
-    });
-  }
-};
-const userByID = async (req, res, next, id) => {
-  try {
-    let user = await User.findById(id);
-    if (!user)
-      return res.status(400).json({
-        error: "User not found",
-      });
-    req.profile = user;
-    next();
-  } catch (err) {
-    return res.status(400).json({
-      error: "Could not retrieve user",
-    });
-  }
-};
-const read = (req, res) => {
-  req.profile.hashed_password = undefined;
-  req.profile.salt = undefined;
-  return res.json(req.profile);
-};
-const update = async (req, res) => {
-  try {
-    let user = req.profile;
-    user = extend(user, req.body);
-    user.updated = Date.now();
-    await user.save();
-    user.hashed_password = undefined;
-    user.salt = undefined;
-    res.json(user);
-  } catch (err) {
-    return res.status(400).json({
-      error: errorHandler.getErrorMessage(err),
-    });
-  }
-};
-const remove = async (req, res) => {
-  try {
-    let user = req.profile;
-    let deletedUser = await user.deleteOne();
-    deletedUser.hashed_password = undefined;
-    deletedUser.salt = undefined;
-    res.json(deletedUser);
-  } catch (err) {
-    return res.status(400).json({
-      error: errorHandler.getErrorMessage(err),
-    });
-  }
-};
+/**
+ * File: user.controller.js
+ * Student Name: [Your Name]
+ * Student ID: [Your ID]
+ * Date: [Date]
+ * Description: Controller functions for User CRUD operations
+ */
 
-const deleteAllUsers = async (req, res) => {
+import User from '../models/user.model.js';
+
+// Get all users
+export const getAllUsers = async (req, res) => {
   try {
-    const result = await User.deleteMany({});
+    const users = await User.find().select('-password');
     res.status(200).json({
       success: true,
-      message: `${result.deletedCount} Users deleted successfully`
+      count: users.length,
+      data: users
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Error deleting Users',
+      message: 'Error fetching users',
       error: error.message
     });
   }
 };
-export default { create, userByID, read, list, remove, update, deleteAllUsers };
+
+// Get user by ID
+export const getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).select('-password');
+    
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: user
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching user',
+      error: error.message
+    });
+  }
+};
+
+// Create new user
+export const createUser = async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    res.status(201).json({
+      success: true,
+      message: 'User created successfully',
+      data: user
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: 'Error creating user',
+      error: error.message
+    });
+  }
+};
+
+// Update user by ID
+export const updateUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    ).select('-password');
+    
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      message: 'User updated successfully',
+      data: user
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: 'Error updating user',
+      error: error.message
+    });
+  }
+};
+
+// Delete user by ID
+export const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      message: 'User deleted successfully'
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting user',
+      error: error.message
+    });
+  }
+};
+
+// Delete all users
+export const deleteAllUsers = async (req, res) => {
+  try {
+    const result = await User.deleteMany({});
+    res.status(200).json({
+      success: true,
+      message: `${result.deletedCount} users deleted successfully`
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting users',
+      error: error.message
+    });
+  }
+};

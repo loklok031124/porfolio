@@ -1,46 +1,151 @@
-import User from "../models/user.model.js";
-import jwt from "jsonwebtoken";
-import { expressjwt } from "express-jwt";
-import config from "./../../config/config.js";
-const signin = async (req, res) => {
+import jwt from 'jsonwebtoken';
+import User from '../models/user.model.js';
+
+// Generate JWT Token
+const generateToken = (userId) => {
+  return jwt.sign(
+    { id: userId },
+    process.env.JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+};
+
+export const signup = async (req, res) => {
   try {
-    let user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(401).json({ error: "User not found" });
-    if (!user.authenticate(req.body.password)) {
-      return res.status(401).send({ error: "Email and password don't match." });
+    const { name, email, password } = req.body;
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: 'User already exists with this email'
+      });
     }
-    const token = jwt.sign({ _id: user._id }, config.jwtSecret);
-    res.cookie("t", token, { expire: new Date() + 9999 });
-    return res.json({
-      token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+
+    // Create new user
+    const user = await User.create({
+      name,
+      email,
+      password
     });
-  } catch (err) {
-    return res.status(401).json({ error: "Could not sign in" });
+
+    // Generate token
+    const token = generateToken(user._id);
+
+    // Set cookie
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+    });
+
+    res.status(201).json({
+      success: true,
+      message: 'User registered successfully',
+      data: {
+        user: user,
+        token: token
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error during registration',
+      error: error.message
+    });
   }
 };
-const signout = (req, res) => {
-  res.clearCookie("t");
-  return res.status(200).json({
-    message: "signed out",
-  });
-};
-const requireSignin = expressjwt({
-  secret: config.jwtSecret,
-  algorithms: ["HS256"],
-  userProperty: "auth",
-});
-const hasAuthorization = (req, res, next) => {
-  const authorized = req.profile && req.auth && req.profile._id == req.auth._id;
-  if (!authorized) {
-    return res.status(403).json({
-      error: "User is not authorized",
+
+export const signin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide email and password'
+      });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid email or password'
+      });
+    }
+
+    const isPasswordValid = await user.comparePassword(password);
+    if (!isPasswordValid) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid email or password'
+      });
+    }
+
+    const token = generateToken(user._id);
+
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'Login successful',
+      data: {
+        user: user,
+        token: token
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error during login',
+      error: error.message
     });
   }
-  next();
 };
-export default { signin, signout, requireSignin, hasAuthorization };
+
+// Sign Out (Logout)
+export const signout = (req, res) => {
+  try {
+    res.clearCookie('token');
+    res.status(200).json({
+      success: true,
+      message: 'Logged out successfully'
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error during logout',
+      error: error.message
+    });
+  }
+};
+
+// Get Current User
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: user
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching user',
+      error: error.message
+    });
+  }
+};

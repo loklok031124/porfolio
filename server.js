@@ -1,10 +1,11 @@
-/**
- * File: server.js
- * Student Name: [Your Name]
- * Student ID: [Your ID]
- * Date: [Date]
- * Description: Main server file for Portfolio Backend API
- */
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 import express from 'express';
 import bodyParser from "body-parser";
@@ -14,7 +15,6 @@ import cookieParser from 'cookie-parser';
 import compress from "compression";
 import helmet from "helmet";
 
-// Import routes
 import contactRoutes from './server/routes/contact.routes.js';
 import projectRoutes from './server/routes/project.routes.js';
 import qualificationRoutes from './server/routes/qualification.routes.js';
@@ -22,12 +22,11 @@ import authRoutes from './server/routes/auth.routes.js';
 import config from './config/config.js';
 import userRoutes from "./server/routes/user.routes.js";
 
-
 const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: process.env.CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());
@@ -38,10 +37,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compress());
 app.use(helmet());
 
-// MongoDB Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(config.mongoUri);
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('✅ MongoDB Connected Successfully');
     console.log(`📦 Database: ${mongoose.connection.name}`);
   } catch (error) {
@@ -50,7 +48,6 @@ const connectDB = async () => {
   }
 };
 
-// Connect to database
 connectDB();
 
 // Root route
@@ -65,8 +62,7 @@ app.use('/api/contacts', contactRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/qualifications', qualificationRoutes);
 app.use('/api/auth', authRoutes);
-app.use("/", userRoutes);
-app.use("/", authRoutes);
+app.use('/api/users', userRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -96,13 +92,11 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🌐 Frontend URL: ${process.env.CLIENT_URL}`);
   console.log(`📡 API URL: http://localhost:${PORT}`);
 });
 
-// DO NOT EXPORT app again if already declared above
-// Remove this line if it exists at the bottom:
 export default app;
