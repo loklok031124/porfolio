@@ -22,9 +22,7 @@
     "install-client": "cd client && npm install",
     "both": "concurrently \"npm run server\" \"npm run client\""
   },
-  "engines": {
-    "node": "24.x"
-  },
+
   "dependencies": {
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
