@@ -1,17 +1,18 @@
-/**
- * File name: vite.config.js
- * Student's Name: [Your Name]
- * Student ID: [Your Student ID]
- * Date: [Current Date]
- * Description: Vite configuration file with performance optimizations and build settings
- */
-
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  envDir: '../',
+  
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.js',
+    css: true,
+  },
   
   // Development server configuration
   server: {

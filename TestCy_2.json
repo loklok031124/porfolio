@@ -1,0 +1,788 @@
+{
+    "title": "Recording 2025/12/1 at 下午7:36:41",
+    "selectorAttribute": "data",
+    "steps": [
+        {
+            "type": "setViewport",
+            "width": 1070,
+            "height": 695,
+            "deviceScaleFactor": 1,
+            "isMobile": false,
+            "hasTouch": false,
+            "isLandscape": false
+        },
+        {
+            "type": "navigate",
+            "url": "http://localhost:3000/",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "http://localhost:3000/",
+                    "title": "Jeff Siu - Junior Developer Portfolio"
+                }
+            ]
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a.btn-primary"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div/div[2]/a[1]"
+                ],
+                [
+                    "pierce/a.btn-primary"
+                ],
+                [
+                    "aria/Learn About Me"
+                ],
+                [
+                    "text/Learn About Me"
+                ]
+            ],
+            "offsetY": 16.18585205078125,
+            "offsetX": 99.9375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a > div"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/header/div/div/a/div"
+                ],
+                [
+                    "pierce/a > div"
+                ],
+                [
+                    "aria/JS",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "text/JS"
+                ]
+            ],
+            "offsetY": 18,
+            "offsetX": 21
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a.btn-secondary"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div/div[2]/a[2]"
+                ],
+                [
+                    "pierce/a.btn-secondary"
+                ],
+                [
+                    "aria/View My Work"
+                ],
+                [
+                    "text/View My Work"
+                ]
+            ],
+            "offsetY": 15.399993896484375,
+            "offsetX": 104.6875
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a:nth-of-type(4) > span"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/header/div/div/nav/a[4]/span"
+                ],
+                [
+                    "pierce/a:nth-of-type(4) > span"
+                ],
+                [
+                    "aria/Services",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "text/Services"
+                ]
+            ],
+            "offsetY": 12.19999885559082,
+            "offsetX": 17.73748779296875
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a:nth-of-type(5) > span"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/header/div/div/nav/a[5]/span"
+                ],
+                [
+                    "pierce/a:nth-of-type(5) > span"
+                ],
+                [
+                    "aria/Contact",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "text/Contact"
+                ]
+            ],
+            "offsetY": 9.19999885559082,
+            "offsetX": 24.2874755859375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#firstname"
+                ],
+                [
+                    "xpath///*[@id=\"firstname\"]"
+                ],
+                [
+                    "pierce/#firstname"
+                ],
+                [
+                    "aria/First Name *"
+                ]
+            ],
+            "offsetY": 31.800003051757812,
+            "offsetX": 78.79998779296875
+        },
+        {
+            "type": "change",
+            "value": "chun Lok",
+            "selectors": [
+                [
+                    "#firstname"
+                ],
+                [
+                    "xpath///*[@id=\"firstname\"]"
+                ],
+                [
+                    "pierce/#firstname"
+                ],
+                [
+                    "aria/First Name *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#lastname"
+                ],
+                [
+                    "xpath///*[@id=\"lastname\"]"
+                ],
+                [
+                    "pierce/#lastname"
+                ],
+                [
+                    "aria/Last Name *"
+                ]
+            ],
+            "offsetY": 15.800003051757812,
+            "offsetX": 77.20001220703125
+        },
+        {
+            "type": "change",
+            "value": "Siu",
+            "selectors": [
+                [
+                    "#lastname"
+                ],
+                [
+                    "xpath///*[@id=\"lastname\"]"
+                ],
+                [
+                    "pierce/#lastname"
+                ],
+                [
+                    "aria/Last Name *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#email"
+                ],
+                [
+                    "xpath///*[@id=\"email\"]"
+                ],
+                [
+                    "pierce/#email"
+                ],
+                [
+                    "aria/Email Address *"
+                ]
+            ],
+            "offsetY": 16.399993896484375,
+            "offsetX": 128.79998779296875
+        },
+        {
+            "type": "change",
+            "value": "chunlsiu2@icloud.com",
+            "selectors": [
+                [
+                    "#email"
+                ],
+                [
+                    "xpath///*[@id=\"email\"]"
+                ],
+                [
+                    "pierce/#email"
+                ],
+                [
+                    "aria/Email Address *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#message"
+                ],
+                [
+                    "xpath///*[@id=\"message\"]"
+                ],
+                [
+                    "pierce/#message"
+                ],
+                [
+                    "aria/Message *"
+                ]
+            ],
+            "offsetY": 29,
+            "offsetX": 76.79998779296875
+        },
+        {
+            "type": "change",
+            "value": "Hi!",
+            "selectors": [
+                [
+                    "#message"
+                ],
+                [
+                    "xpath///*[@id=\"message\"]"
+                ],
+                [
+                    "pierce/#message"
+                ],
+                [
+                    "aria/Message *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "main button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div/div[2]/div/form/button"
+                ],
+                [
+                    "pierce/main button"
+                ],
+                [
+                    "aria/Send Message"
+                ],
+                [
+                    "text/Send Message"
+                ]
+            ],
+            "offsetY": 21.79998779296875,
+            "offsetX": 121.79998779296875,
+            "duration": 445
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a:nth-of-type(6) > span"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/header/div/div/nav/a[6]/span"
+                ],
+                [
+                    "pierce/a:nth-of-type(6) > span"
+                ],
+                [
+                    "aria/Dashboard",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "text/Dashboard"
+                ]
+            ],
+            "offsetY": 11.19999885559082,
+            "offsetX": 25.29998779296875
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div.grid > div:nth-of-type(1) button:nth-of-type(1) > svg"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div[3]/div/div[2]/div[1]/div/div[2]/button[1]/svg"
+                ],
+                [
+                    "pierce/div.grid > div:nth-of-type(1) button:nth-of-type(1) > svg"
+                ]
+            ],
+            "offsetY": 4.5999908447265625,
+            "offsetX": 6.5999755859375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div.dashboard-content > div > div:nth-of-type(3) button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div[3]/div/div[3]/div/button"
+                ],
+                [
+                    "pierce/div.dashboard-content > div > div:nth-of-type(3) button"
+                ],
+                [
+                    "aria/Close"
+                ],
+                [
+                    "text/Close"
+                ]
+            ],
+            "offsetY": 35.79998779296875,
+            "offsetX": 28.79998779296875
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div.grid > div:nth-of-type(1) button:nth-of-type(2) > svg"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div[3]/div/div[2]/div[1]/div/div[2]/button[2]/svg"
+                ],
+                [
+                    "pierce/div.grid > div:nth-of-type(1) button:nth-of-type(2) > svg"
+                ]
+            ],
+            "offsetY": 9.599990844726562,
+            "offsetX": 11.5999755859375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div.dashboard-tabs > button:nth-of-type(2)"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div[2]/button[2]"
+                ],
+                [
+                    "pierce/div.dashboard-tabs > button:nth-of-type(2)"
+                ],
+                [
+                    "aria/Projects[role=\"button\"]"
+                ]
+            ],
+            "offsetY": 24,
+            "offsetX": 61.53749084472656
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "main div:nth-of-type(1) > button"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div[3]/div/div[1]/button"
+                ],
+                [
+                    "pierce/main div:nth-of-type(1) > button"
+                ],
+                [
+                    "aria/Add Project"
+                ],
+                [
+                    "text/Add Project"
+                ]
+            ],
+            "offsetY": 12.400001525878906,
+            "offsetX": 19.39996337890625
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#title"
+                ],
+                [
+                    "xpath///*[@id=\"title\"]"
+                ],
+                [
+                    "pierce/#title"
+                ],
+                [
+                    "aria/Project Title *"
+                ]
+            ],
+            "offsetY": 20.399993896484375,
+            "offsetX": 301
+        },
+        {
+            "type": "change",
+            "value": "Good",
+            "selectors": [
+                [
+                    "#title"
+                ],
+                [
+                    "xpath///*[@id=\"title\"]"
+                ],
+                [
+                    "pierce/#title"
+                ],
+                [
+                    "aria/Project Title *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#firstname"
+                ],
+                [
+                    "xpath///*[@id=\"firstname\"]"
+                ],
+                [
+                    "pierce/#firstname"
+                ],
+                [
+                    "aria/First Name *"
+                ]
+            ],
+            "offsetY": 5,
+            "offsetX": 138
+        },
+        {
+            "type": "change",
+            "value": "Siu",
+            "selectors": [
+                [
+                    "#firstname"
+                ],
+                [
+                    "xpath///*[@id=\"firstname\"]"
+                ],
+                [
+                    "pierce/#firstname"
+                ],
+                [
+                    "aria/First Name *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "change",
+            "value": "Lok",
+            "selectors": [
+                [
+                    "#lastname"
+                ],
+                [
+                    "xpath///*[@id=\"lastname\"]"
+                ],
+                [
+                    "pierce/#lastname"
+                ],
+                [
+                    "aria/Last Name *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#email"
+                ],
+                [
+                    "xpath///*[@id=\"email\"]"
+                ],
+                [
+                    "pierce/#email"
+                ],
+                [
+                    "aria/Email *"
+                ]
+            ],
+            "offsetY": 35.600006103515625,
+            "offsetX": 81
+        },
+        {
+            "type": "change",
+            "value": "jessie@i2cool.com",
+            "selectors": [
+                [
+                    "#email"
+                ],
+                [
+                    "xpath///*[@id=\"email\"]"
+                ],
+                [
+                    "pierce/#email"
+                ],
+                [
+                    "aria/Email *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#completion"
+                ],
+                [
+                    "xpath///*[@id=\"completion\"]"
+                ],
+                [
+                    "pierce/#completion"
+                ],
+                [
+                    "aria/Completion Date *"
+                ]
+            ],
+            "offsetY": 23.600006103515625,
+            "offsetX": 931
+        },
+        {
+            "type": "change",
+            "value": "2025-12-01",
+            "selectors": [
+                [
+                    "#completion"
+                ],
+                [
+                    "xpath///*[@id=\"completion\"]"
+                ],
+                [
+                    "pierce/#completion"
+                ],
+                [
+                    "aria/Completion Date *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "#description"
+                ],
+                [
+                    "xpath///*[@id=\"description\"]"
+                ],
+                [
+                    "pierce/#description"
+                ],
+                [
+                    "aria/Description *"
+                ]
+            ],
+            "offsetY": 0.20001220703125,
+            "offsetX": 112
+        },
+        {
+            "type": "change",
+            "value": "Good",
+            "selectors": [
+                [
+                    "#description"
+                ],
+                [
+                    "xpath///*[@id=\"description\"]"
+                ],
+                [
+                    "pierce/#description"
+                ],
+                [
+                    "aria/Description *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div.card button.btn-primary"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div[3]/div/div[2]/form/div[6]/button[1]"
+                ],
+                [
+                    "pierce/div.card button.btn-primary"
+                ],
+                [
+                    "aria/Create Project"
+                ],
+                [
+                    "text/Create Project"
+                ]
+            ],
+            "offsetY": 15,
+            "offsetX": 71
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div:nth-of-type(4) button:nth-of-type(3)"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/main/div/div/div[3]/div/div[2]/div[4]/div/div[2]/button[3]"
+                ],
+                [
+                    "pierce/div:nth-of-type(4) button:nth-of-type(3)"
+                ]
+            ],
+            "offsetY": 27,
+            "offsetX": 12.5999755859375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "button > span"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/header/div/div/nav/button/span"
+                ],
+                [
+                    "pierce/button > span"
+                ],
+                [
+                    "aria/Sign Out",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "text/Sign Out"
+                ]
+            ],
+            "offsetY": 11.399999618530273,
+            "offsetX": 15.08746337890625
+        },
+        {
+            "type": "change",
+            "value": "admin1234567@porfolio.com",
+            "selectors": [
+                [
+                    "#email"
+                ],
+                [
+                    "xpath///*[@id=\"email\"]"
+                ],
+                [
+                    "pierce/#email"
+                ],
+                [
+                    "aria/Email Address *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "change",
+            "value": "admin1234567",
+            "selectors": [
+                [
+                    "#password"
+                ],
+                [
+                    "xpath///*[@id=\"password\"]"
+                ],
+                [
+                    "pierce/#password"
+                ],
+                [
+                    "aria/Password *"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "a:nth-of-type(5) > span"
+                ],
+                [
+                    "xpath///*[@id=\"root\"]/div/header/div/div/nav/a[5]/span"
+                ],
+                [
+                    "pierce/a:nth-of-type(5) > span"
+                ],
+                [
+                    "aria/Contact",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "text/Contact"
+                ]
+            ],
+            "offsetY": 11.399999618530273,
+            "offsetX": 39.9749755859375
+        }
+    ]
+}
