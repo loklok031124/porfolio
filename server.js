@@ -91,6 +91,16 @@ app.use((err, req, res, next) => {
   }
 });
 
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static(path.join(__dirname, 'client/dist')));
+
+  // Serve index.html for any other routes (SPA)
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/dist/index.html'));
+  });
+}
+
 // Start server
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

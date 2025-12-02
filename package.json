@@ -18,7 +18,12 @@
     "dev": "nodemon server.js",
     "client": "cd client && npm run dev",
     "server": "nodemon server.js",
+    "build": "cd client && npm install && npm run build",
+    "install-client": "cd client && npm install",
     "both": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
