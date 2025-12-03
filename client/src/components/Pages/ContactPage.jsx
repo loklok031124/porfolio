@@ -24,15 +24,15 @@ const ContactPage = () => (
           <ul className="contact-details">
             <li className="contact-detail">
               <Mail size={20} />
-              <span>john.doe@email.com</span>
+              <span>chunlsiu2@icloud.com</span>
             </li>
             <li className="contact-detail">
               <span style={{fontSize: '1.25rem'}}>📱</span>
-              <span>+1 (555) 123-4567</span>
+              <span>+1 (437) 219-3768</span>
             </li>
             <li className="contact-detail">
               <span style={{fontSize: '1.25rem'}}>📍</span>
-              <span>Toronto, Ontario, Canada</span>
+              <span>937 Progress Avenue, Toronto, Ontario, Canada</span>
             </li>
           </ul>
         </div>
