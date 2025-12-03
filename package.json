@@ -23,7 +23,7 @@
     "both": "concurrently \"npm run server\" \"npm run client\""
   },
   "engines": {
-    "node": "24.x"
+    "node": "22.x"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
