@@ -1,21 +1,11 @@
 # Dependencies
-node_modules/
-client/node_modules/
+node_modules
 
 # Environment variables - IMPORTANT!
 .env
-.env.local
-.env.production
-.env.*.local
-
-# Build output
-dist/
-build/
-client/dist/
 
 # Logs
 *.log
-npm-debug.log*
 
 # OS files
 .DS_Store
@@ -25,8 +15,10 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Vercel
-.vercel
-
 #cypress
-cypress/
+cypress
+cypress.config.js
+TestCy_2.json
+
+#scripts
+server/scripts/createAdmin.js

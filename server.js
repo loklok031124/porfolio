@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.join(__dirname, '.env') });
+//dotenv.config();
 
 import express from 'express';
 import bodyParser from "body-parser";
@@ -25,10 +26,19 @@ import userRoutes from "./server/routes/user.routes.js";
 const app = express();
 
 // Middleware
+const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3001'];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL,
-  credentials: true
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
