@@ -24,7 +24,6 @@ import config from './config/config.js';
 import userRoutes from "./server/routes/user.routes.js";
 
 const app = express();
-
 // Middleware
 const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3001'];
 

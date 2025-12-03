@@ -23,6 +23,7 @@ export default defineConfig({
   
   // Build configuration
   build: {
+    emptyOutDir: true, // Clear output directory before build
     outDir: 'dist',       // Output directory
     sourcemap: true,      // Generate source maps for debugging
     
