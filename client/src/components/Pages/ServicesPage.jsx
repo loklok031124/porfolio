@@ -8,25 +8,25 @@ const ServicesPage = () => {
       title: "Web Development",
       description: "Custom websites and web applications built with modern frameworks and best practices.",
       icon: Globe,
-      features: ["Responsive Design", "SEO Optimization", "Performance Optimization", "Cross-browser Compatibility"]
+      features: ["Responsive Design", "SEO Optimization", "Performance Optimization"]
     },
     {
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android devices.",
       icon: Smartphone,
-      features: ["React Native", "Flutter", "Native iOS/Android", "App Store Optimization"]
+      features: ["React Native", "Flutter", "Native iOS/Android"]
     },
     {
       title: "Backend Development",
       description: "Robust server-side solutions, APIs, and database management systems.",
       icon: Database,
-      features: ["RESTful APIs", "Database Design", "Cloud Integration", "Security Implementation"]
+      features: ["RESTful APIs", "Database Design", "Cloud Integration"]
     },
     {
       title: "Custom Software Solutions",
       description: "Tailored software solutions to meet specific business requirements and workflows.",
       icon: Code,
-      features: ["Business Analysis", "Custom Development", "System Integration", "Maintenance & Support"]
+      features: ["Software Architecture", "Software Requirements", "Agile Development"]
     }
   ]
 

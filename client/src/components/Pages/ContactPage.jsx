@@ -19,20 +19,18 @@ const ContactPage = () => (
           <p>
             I'm always interested in new opportunities and exciting projects. 
             Let's discuss how we can work together to bring your ideas to life.
+            
           </p>
+          <p>I will reply to your message with the following email!</p>
           
           <ul className="contact-details">
             <li className="contact-detail">
-              <Mail size={20} />
-              <span>chunlsiu2@icloud.com</span>
+              <span style={{fontSize: '1.25rem'}}>📩</span>
+              <span> chunlsiu2@icloud.com</span>
             </li>
             <li className="contact-detail">
               <span style={{fontSize: '1.25rem'}}>📱</span>
               <span>+1 (437) 219-3768</span>
-            </li>
-            <li className="contact-detail">
-              <span style={{fontSize: '1.25rem'}}>📍</span>
-              <span>937 Progress Avenue, Toronto, Ontario, Canada</span>
             </li>
           </ul>
         </div>

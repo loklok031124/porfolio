@@ -125,7 +125,8 @@ const QualificationList = () => {
                     {qualification.description?.substring(0, 150)}...
                   </p>
                   <p style={{ color: '#9ca3af', fontSize: '0.75rem', marginTop: '0.5rem' }}>
-                    Completed: {new Date(qualification.completion).toLocaleDateString()}
+                    {qualification.startDate && <>Start: {new Date(qualification.startDate).toLocaleDateString()} &nbsp;·&nbsp; </>}
+                    Completion: {new Date(qualification.completion).toLocaleDateString()}
                   </p>
                 </div>
                 
@@ -209,9 +210,11 @@ const QualificationList = () => {
             <div style={{ marginBottom: '1rem' }}>
               <strong>Name:</strong> {viewingQualification.firstname} {viewingQualification.lastname}
             </div>
-            <div style={{ marginBottom: '1rem' }}>
-              <strong>Email:</strong> {viewingQualification.email}
-            </div>
+            {viewingQualification.startDate && (
+              <div style={{ marginBottom: '1rem' }}>
+                <strong>Start Date:</strong> {new Date(viewingQualification.startDate).toLocaleDateString()}
+              </div>
+            )}
             <div style={{ marginBottom: '1rem' }}>
               <strong>Completion Date:</strong> {new Date(viewingQualification.completion).toLocaleDateString()}
             </div>

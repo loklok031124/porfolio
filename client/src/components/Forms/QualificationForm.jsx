@@ -11,7 +11,7 @@ const QualificationForm = ({ qualification = null, onSuccess, onCancel }) => {
     title: '',
     firstname: '',
     lastname: '',
-    email: '',
+    startDate: '',
     completion: '',
     description: ''
   });
@@ -25,7 +25,7 @@ const QualificationForm = ({ qualification = null, onSuccess, onCancel }) => {
         title: qualification.title || '',
         firstname: qualification.firstname || '',
         lastname: qualification.lastname || '',
-        email: qualification.email || '',
+        startDate: qualification.startDate ? qualification.startDate.split('T')[0] : '',
         completion: qualification.completion ? qualification.completion.split('T')[0] : '',
         description: qualification.description || ''
       });
@@ -45,12 +45,7 @@ const QualificationForm = ({ qualification = null, onSuccess, onCancel }) => {
     
     if (!formData.title.trim()) newErrors.title = 'Title is required';
     if (!formData.firstname.trim()) newErrors.firstname = 'First name is required';
-    if (!formData.lastname.trim()) newErrors.lastname = 'Last name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
+    if (!formData.startDate) newErrors.startDate = 'Start date is required';
     if (!formData.completion) newErrors.completion = 'Completion date is required';
     if (!formData.description.trim()) newErrors.description = 'Description is required';
     
@@ -119,34 +114,34 @@ const QualificationForm = ({ qualification = null, onSuccess, onCancel }) => {
         </div>
         
         <div className="form-group">
-          <label htmlFor="lastname" className="form-label">Last Name *</label>
+          <label htmlFor="lastname" className="form-label">Last Name</label>
           <input
             type="text"
             id="lastname"
             name="lastname"
             value={formData.lastname}
             onChange={handleChange}
-            className={`form-input ${errors.lastname ? 'error' : ''}`}
+            className="form-input"
           />
-          {errors.lastname && <span className="error-message">{errors.lastname}</span>}
         </div>
       </div>
 
-      <div className="form-group">
-        <label htmlFor="email" className="form-label">Email *</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className={`form-input ${errors.email ? 'error' : ''}`}
-        />
-        {errors.email && <span className="error-message">{errors.email}</span>}
-      </div>
+      <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="startDate" className="form-label">Start Date *</label>
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            value={formData.startDate}
+            onChange={handleChange}
+            className={`form-input ${errors.startDate ? 'error' : ''}`}
+          />
+          {errors.startDate && <span className="error-message">{errors.startDate}</span>}
+        </div>
 
-      <div className="form-group">
-        <label htmlFor="completion" className="form-label">Completion Date *</label>
+        <div className="form-group">
+          <label htmlFor="completion" className="form-label">Completion Date *</label>
         <input
           type="date"
           id="completion"
@@ -155,7 +150,8 @@ const QualificationForm = ({ qualification = null, onSuccess, onCancel }) => {
           onChange={handleChange}
           className={`form-input ${errors.completion ? 'error' : ''}`}
         />
-        {errors.completion && <span className="error-message">{errors.completion}</span>}
+          {errors.completion && <span className="error-message">{errors.completion}</span>}
+        </div>
       </div>
 
       <div className="form-group">

@@ -131,9 +131,6 @@ const SignIn = () => {
                 </button>
               </form>
 
-              <p className="text-center" style={{ marginTop: '1.5rem' }}>
-                Don't have an account? <Link to="/signup" style={{ color: '#3b82f6', fontWeight: '600' }}>Sign Up</Link>
-              </p>
             </div>
           </div>
         </div>

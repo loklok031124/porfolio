@@ -1,3 +1,11 @@
+/**
+ * File: project.model.js
+ * Student Name: [Your Name]
+ * Student ID: [Your Student ID]
+ * Date: [Current Date]
+ * Description: Updated Mongoose model for Project collection with detailed fields
+ */
+
 import mongoose from 'mongoose';
 
 const projectSchema = new mongoose.Schema({
@@ -6,30 +14,59 @@ const projectSchema = new mongoose.Schema({
     required: [true, 'Title is required'],
     trim: true
   },
-  firstname: {
+  description: {
     type: String,
-    required: [true, 'First name is required'],
+    required: [true, 'Description is required'],
     trim: true
   },
-  lastname: {
+  role: {
     type: String,
-    required: [true, 'Last name is required'],
-    trim: true
-  },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
+    required: [true, 'Role is required'],
     trim: true,
-    lowercase: true
+    default: 'Developer'
+  },
+  outcome: {
+    type: String,
+    required: [true, 'Outcome is required'],
+    trim: true
+  },
+  tech: {
+    type: [String],
+    required: [true, 'Technologies are required'],
+    validate: {
+      validator: function(v) {
+        return v && v.length > 0;
+      },
+      message: 'At least one technology is required'
+    }
+  },
+  demoUrl: {
+    type: String,
+    trim: true,
+    default: '#'
+  },
+  githubUrl: {
+    type: String,
+    trim: true,
+    default: '#'
   },
   completion: {
     type: Date,
     required: [true, 'Completion date is required']
   },
-  description: {
+  // Optional fields for additional info
+  firstname: {
     type: String,
-    required: [true, 'Description is required'],
     trim: true
+  },
+  lastname: {
+    type: String,
+    trim: true
+  },
+  email: {
+    type: String,
+    trim: true,
+    lowercase: true
   }
 }, {
   timestamps: true

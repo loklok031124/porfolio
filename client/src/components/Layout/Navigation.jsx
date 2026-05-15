@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, User, FolderOpen, Settings, Mail, Menu, X, LogOut, LayoutDashboard } from 'lucide-react';
+import { User, FolderOpen, Settings, Mail, Menu, X, LogOut, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const Navigation = () => {
@@ -13,9 +13,8 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAuthenticated, isAdmin, signout, user } = useAuth();
-  
+
   const navItems = [
-    { path: '/', label: 'Home', icon: Home },
     { path: '/about', label: 'About Me', icon: User },
     { path: '/projects', label: 'Projects', icon: FolderOpen },
     { path: '/services', label: 'Services', icon: Settings },
@@ -73,9 +72,6 @@ const Navigation = () => {
           <>
             <Link to="/signin" className="nav-link">
               Sign In
-            </Link>
-            <Link to="/signup" className="btn btn-primary" style={{ marginLeft: '0.5rem', padding: '0.5rem 1rem' }}>
-              Sign Up
             </Link>
           </>
         )}
@@ -137,13 +133,6 @@ const Navigation = () => {
                   className="nav-mobile-link"
                 >
                   Sign In
-                </Link>
-                <Link
-                  to="/signup"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="nav-mobile-link"
-                >
-                  Sign Up
                 </Link>
               </>
             )}

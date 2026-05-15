@@ -1,0 +1,763 @@
+{
+  "nodes": [
+    {
+      "id": "file:server.js",
+      "type": "file",
+      "name": "server.js",
+      "filePath": "server.js",
+      "summary": "Main Express application entry point that configures middleware, connects to MongoDB, mounts all API route groups, serves the React frontend in production, and starts the HTTP server.",
+      "tags": ["entry-point", "api-handler", "middleware", "service"],
+      "complexity": "complex",
+      "languageNotes": "Uses ESM dynamic import ordering with dotenv configured before other imports to ensure env vars are available at module load time."
+    },
+    {
+      "id": "function:server.js:connectDB",
+      "type": "function",
+      "name": "connectDB",
+      "filePath": "server.js",
+      "lineRange": [64, 74],
+      "summary": "Async function that connects to MongoDB using the MONGODB_URI environment variable and exits the process on connection failure.",
+      "tags": ["service", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/express.js",
+      "type": "file",
+      "name": "express.js",
+      "filePath": "server/express.js",
+      "summary": "Fully commented-out alternative Express app configuration file that was superseded by the root server.js; contains no active code.",
+      "tags": ["middleware", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/assets-router.js",
+      "type": "file",
+      "name": "assets-router.js",
+      "filePath": "server/assets-router.js",
+      "summary": "Express router that redirects image and video asset requests to a local Vite dev server at port 3000, used during development to proxy static media files.",
+      "tags": ["middleware", "utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/controllers/auth.controller.js",
+      "type": "file",
+      "name": "auth.controller.js",
+      "filePath": "server/controllers/auth.controller.js",
+      "summary": "Authentication controller providing signin (with JWT cookie issuance), signout (cookie clearing), and getCurrentUser handlers for the portfolio backend.",
+      "tags": ["api-handler", "middleware", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/controllers/auth.controller.js:generateToken",
+      "type": "function",
+      "name": "generateToken",
+      "filePath": "server/controllers/auth.controller.js",
+      "lineRange": [5, 11],
+      "summary": "Generates a signed JWT with a 7-day expiry for a given user ID using the JWT_SECRET environment variable.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/controllers/auth.controller.js:signin",
+      "type": "function",
+      "name": "signin",
+      "filePath": "server/controllers/auth.controller.js",
+      "lineRange": [13, 63],
+      "summary": "Validates user credentials against the database, issues a JWT as an HttpOnly cookie, and returns user data on successful login.",
+      "tags": ["api-handler", "middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/controllers/auth.controller.js:signout",
+      "type": "function",
+      "name": "signout",
+      "filePath": "server/controllers/auth.controller.js",
+      "lineRange": [66, 80],
+      "summary": "Clears the authentication cookie to log the user out of the portfolio application.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/controllers/auth.controller.js:getCurrentUser",
+      "type": "function",
+      "name": "getCurrentUser",
+      "filePath": "server/controllers/auth.controller.js",
+      "lineRange": [83, 105],
+      "summary": "Returns the currently authenticated user's profile (excluding password) based on the user ID attached by auth middleware.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/controllers/contact.controller.js",
+      "type": "file",
+      "name": "contact.controller.js",
+      "filePath": "server/controllers/contact.controller.js",
+      "summary": "CRUD controller for the Contact resource, exposing handlers for listing, fetching by ID, creating, updating, deleting individual contacts, and bulk deleting all contacts.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/controllers/contact.controller.js:getAllContacts",
+      "type": "function",
+      "name": "getAllContacts",
+      "filePath": "server/controllers/contact.controller.js",
+      "lineRange": [12, 27],
+      "summary": "Returns all contact documents sorted by creation date descending.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/controllers/contact.controller.js:createContact",
+      "type": "function",
+      "name": "createContact",
+      "filePath": "server/controllers/contact.controller.js",
+      "lineRange": [55, 70],
+      "summary": "Creates a new contact document from the request body and returns the created document.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/controllers/error.controller.js",
+      "type": "file",
+      "name": "error.controller.js",
+      "filePath": "server/controllers/error.controller.js",
+      "summary": "Minimal stub error controller exporting placeholder handleError and getErrorMessage functions that do not yet contain real logic.",
+      "tags": ["middleware", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/controllers/project.controller.js",
+      "type": "file",
+      "name": "project.controller.js",
+      "filePath": "server/controllers/project.controller.js",
+      "summary": "CRUD controller for the Project resource, providing handlers to list, fetch by ID, create, update, delete individual projects, and bulk-delete all projects.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/controllers/project.controller.js:getAllProjects",
+      "type": "function",
+      "name": "getAllProjects",
+      "filePath": "server/controllers/project.controller.js",
+      "lineRange": [12, 27],
+      "summary": "Returns all project documents sorted by completion date descending.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/controllers/project.controller.js:createProject",
+      "type": "function",
+      "name": "createProject",
+      "filePath": "server/controllers/project.controller.js",
+      "lineRange": [55, 70],
+      "summary": "Creates a new project document from the request body and returns the created document.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/controllers/qualification.controller.js",
+      "type": "file",
+      "name": "qualification.controller.js",
+      "filePath": "server/controllers/qualification.controller.js",
+      "summary": "CRUD controller for the Qualification resource, providing handlers to list, fetch by ID, create, update, delete individual qualifications, and bulk-delete all qualifications.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/controllers/qualification.controller.js:getAllQualifications",
+      "type": "function",
+      "name": "getAllQualifications",
+      "filePath": "server/controllers/qualification.controller.js",
+      "lineRange": [12, 27],
+      "summary": "Returns all qualification documents sorted by completion date descending.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/controllers/qualification.controller.js:createQualification",
+      "type": "function",
+      "name": "createQualification",
+      "filePath": "server/controllers/qualification.controller.js",
+      "lineRange": [55, 70],
+      "summary": "Creates a new qualification document from the request body and returns the created document.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/controllers/user.controller.js",
+      "type": "file",
+      "name": "user.controller.js",
+      "filePath": "server/controllers/user.controller.js",
+      "summary": "CRUD controller for the User resource, providing handlers to list (excluding passwords), fetch by ID, create, update, delete individual users, and bulk-delete all users.",
+      "tags": ["api-handler", "service", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/controllers/user.controller.js:getAllUsers",
+      "type": "function",
+      "name": "getAllUsers",
+      "filePath": "server/controllers/user.controller.js",
+      "lineRange": [12, 27],
+      "summary": "Returns all user documents with password fields excluded.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/controllers/user.controller.js:createUser",
+      "type": "function",
+      "name": "createUser",
+      "filePath": "server/controllers/user.controller.js",
+      "lineRange": [55, 70],
+      "summary": "Creates a new user document from the request body; password hashing is handled by the User model pre-save hook.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/helpers/dbErrorHandler.js",
+      "type": "file",
+      "name": "dbErrorHandler.js",
+      "filePath": "server/helpers/dbErrorHandler.js",
+      "summary": "Utility module that parses MongoDB error objects into human-readable messages, with special handling for duplicate-key errors (code 11000/11001) and Mongoose validation errors.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/helpers/dbErrorHandler.js:getErrorMessage",
+      "type": "function",
+      "name": "getErrorMessage",
+      "filePath": "server/helpers/dbErrorHandler.js",
+      "lineRange": [1, 18],
+      "summary": "Inspects a MongoDB/Mongoose error object and returns a user-friendly error message string, delegating to getUniqueErrorMessage for duplicate-key errors.",
+      "tags": ["utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/helpers/dbErrorHandler.js:getUniqueErrorMessage",
+      "type": "function",
+      "name": "getUniqueErrorMessage",
+      "filePath": "server/helpers/dbErrorHandler.js",
+      "lineRange": [19, 34],
+      "summary": "Extracts the field name from a MongoDB duplicate-key error message to produce a friendly 'X already exists' error string.",
+      "tags": ["utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/middleware/auth.middleware.js",
+      "type": "file",
+      "name": "auth.middleware.js",
+      "filePath": "server/middleware/auth.middleware.js",
+      "summary": "JWT-based authentication middleware providing requireAuth (blocks unauthenticated requests) and optionalAuth (attaches user if token present) for Express routes.",
+      "tags": ["middleware", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/middleware/auth.middleware.js:requireAuth",
+      "type": "function",
+      "name": "requireAuth",
+      "filePath": "server/middleware/auth.middleware.js",
+      "lineRange": [5, 44],
+      "summary": "Middleware that extracts and verifies a JWT from cookies or the Authorization header, attaches the resolved user to req.user, and rejects unauthenticated requests with 401.",
+      "tags": ["middleware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:server/middleware/auth.middleware.js:optionalAuth",
+      "type": "function",
+      "name": "optionalAuth",
+      "filePath": "server/middleware/auth.middleware.js",
+      "lineRange": [47, 67],
+      "summary": "Middleware that silently attaches user data to req.user when a valid JWT is present, but always calls next() without blocking unauthenticated requests.",
+      "tags": ["middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/models/contact.model.js",
+      "type": "file",
+      "name": "contact.model.js",
+      "filePath": "server/models/contact.model.js",
+      "summary": "Mongoose model for the Contact collection with required firstname, lastname, and email fields (with regex validation), optional message field, and auto timestamps.",
+      "tags": ["data-model", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/models/project.model.js",
+      "type": "file",
+      "name": "project.model.js",
+      "filePath": "server/models/project.model.js",
+      "summary": "Mongoose model for the Project collection with fields for title, description, role, outcome, technology stack array, demo/GitHub URLs, completion date, and optional author info.",
+      "tags": ["data-model", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/models/qualification.model.js",
+      "type": "file",
+      "name": "qualification.model.js",
+      "filePath": "server/models/qualification.model.js",
+      "summary": "Mongoose model for the Qualification collection with required title, firstname, startDate, completion date, and description fields.",
+      "tags": ["data-model", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/models/user.model.js",
+      "type": "file",
+      "name": "user.model.js",
+      "filePath": "server/models/user.model.js",
+      "summary": "Mongoose User model with bcrypt password hashing via a pre-save hook, a comparePassword instance method, a toJSON method that strips passwords from responses, and admin/user role enumeration.",
+      "tags": ["data-model", "validation", "middleware"],
+      "complexity": "moderate",
+      "languageNotes": "Uses Mongoose schema lifecycle hooks (pre-save) and instance methods to encapsulate password security logic directly in the model."
+    },
+    {
+      "id": "file:server/routes/auth.routes.js",
+      "type": "file",
+      "name": "auth.routes.js",
+      "filePath": "server/routes/auth.routes.js",
+      "summary": "Express router defining the /signin, /signout, and /me authentication endpoints, with the /me route protected by the requireAuth middleware.",
+      "tags": ["api-handler", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/contact.routes.js",
+      "type": "file",
+      "name": "contact.routes.js",
+      "filePath": "server/routes/contact.routes.js",
+      "summary": "Express router mounting full CRUD routes for the Contact resource at /api/contacts, including a bulk-delete endpoint.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/project.routes.js",
+      "type": "file",
+      "name": "project.routes.js",
+      "filePath": "server/routes/project.routes.js",
+      "summary": "Express router mounting full CRUD routes for the Project resource at /api/projects, including a bulk-delete endpoint.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/qualification.routes.js",
+      "type": "file",
+      "name": "qualification.routes.js",
+      "filePath": "server/routes/qualification.routes.js",
+      "summary": "Express router mounting full CRUD routes for the Qualification resource at /api/qualifications, including a bulk-delete endpoint.",
+      "tags": ["api-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/user.routes.js",
+      "type": "file",
+      "name": "user.routes.js",
+      "filePath": "server/routes/user.routes.js",
+      "summary": "Express router mounting CRUD routes for the User resource at /api/users, with all mutating and read routes (except user creation) protected by requireAuth middleware.",
+      "tags": ["api-handler", "middleware"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/scripts/createAdmin.js",
+      "type": "file",
+      "name": "createAdmin.js",
+      "filePath": "server/scripts/createAdmin.js",
+      "summary": "One-off script that connects directly to MongoDB and seeds an admin user account for the portfolio application; contains a hardcoded connection string with credentials.",
+      "tags": ["utility", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:config/config.js",
+      "type": "file",
+      "name": "config.js",
+      "filePath": "config/config.js",
+      "summary": "Central configuration object that reads NODE_ENV, PORT, JWT_SECRET, and MONGODB_URI from environment variables and exports them for use across the server.",
+      "tags": ["configuration", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:TestCy_fixed.json",
+      "type": "config",
+      "name": "TestCy_fixed.json",
+      "filePath": "TestCy_fixed.json",
+      "summary": "Recorded end-to-end test script (Cypress/Chrome DevTools Recorder format) capturing browser interactions for the portfolio application including navigation, sign-in, and form operations.",
+      "tags": ["configuration", "ci-cd"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server.js",
+      "target": "function:server.js:connectDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server.js",
+      "target": "file:server/routes/contact.routes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server.js",
+      "target": "file:server/routes/project.routes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server.js",
+      "target": "file:server/routes/qualification.routes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server.js",
+      "target": "file:server/routes/auth.routes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server.js",
+      "target": "file:config/config.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server.js",
+      "target": "file:server/routes/user.routes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/express.js",
+      "target": "file:server/routes/user.routes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/express.js",
+      "target": "file:server/routes/auth.routes.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "function:server/controllers/auth.controller.js:generateToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "function:server/controllers/auth.controller.js:signin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "function:server/controllers/auth.controller.js:signout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "function:server/controllers/auth.controller.js:getCurrentUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "function:server/controllers/auth.controller.js:signin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "function:server/controllers/auth.controller.js:signout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "function:server/controllers/auth.controller.js:getCurrentUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/auth.controller.js",
+      "target": "file:server/models/user.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/controllers/contact.controller.js",
+      "target": "function:server/controllers/contact.controller.js:getAllContacts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/contact.controller.js",
+      "target": "function:server/controllers/contact.controller.js:createContact",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/contact.controller.js",
+      "target": "function:server/controllers/contact.controller.js:getAllContacts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/contact.controller.js",
+      "target": "function:server/controllers/contact.controller.js:createContact",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/contact.controller.js",
+      "target": "file:server/models/contact.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/controllers/project.controller.js",
+      "target": "function:server/controllers/project.controller.js:getAllProjects",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/project.controller.js",
+      "target": "function:server/controllers/project.controller.js:createProject",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/project.controller.js",
+      "target": "function:server/controllers/project.controller.js:getAllProjects",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/project.controller.js",
+      "target": "function:server/controllers/project.controller.js:createProject",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/project.controller.js",
+      "target": "file:server/models/project.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/controllers/qualification.controller.js",
+      "target": "function:server/controllers/qualification.controller.js:getAllQualifications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/qualification.controller.js",
+      "target": "function:server/controllers/qualification.controller.js:createQualification",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/qualification.controller.js",
+      "target": "function:server/controllers/qualification.controller.js:getAllQualifications",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/qualification.controller.js",
+      "target": "function:server/controllers/qualification.controller.js:createQualification",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/qualification.controller.js",
+      "target": "file:server/models/qualification.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/controllers/user.controller.js",
+      "target": "function:server/controllers/user.controller.js:getAllUsers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/user.controller.js",
+      "target": "function:server/controllers/user.controller.js:createUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/controllers/user.controller.js",
+      "target": "function:server/controllers/user.controller.js:getAllUsers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/user.controller.js",
+      "target": "function:server/controllers/user.controller.js:createUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/controllers/user.controller.js",
+      "target": "file:server/models/user.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/helpers/dbErrorHandler.js",
+      "target": "function:server/helpers/dbErrorHandler.js:getErrorMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/helpers/dbErrorHandler.js",
+      "target": "function:server/helpers/dbErrorHandler.js:getUniqueErrorMessage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/helpers/dbErrorHandler.js",
+      "target": "function:server/helpers/dbErrorHandler.js:getErrorMessage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/middleware/auth.middleware.js",
+      "target": "function:server/middleware/auth.middleware.js:requireAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/middleware/auth.middleware.js",
+      "target": "function:server/middleware/auth.middleware.js:optionalAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/middleware/auth.middleware.js",
+      "target": "function:server/middleware/auth.middleware.js:requireAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/middleware/auth.middleware.js",
+      "target": "function:server/middleware/auth.middleware.js:optionalAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/middleware/auth.middleware.js",
+      "target": "file:server/models/user.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/auth.routes.js",
+      "target": "file:server/controllers/auth.controller.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/auth.routes.js",
+      "target": "file:server/middleware/auth.middleware.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/contact.routes.js",
+      "target": "file:server/controllers/contact.controller.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/project.routes.js",
+      "target": "file:server/controllers/project.controller.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/qualification.routes.js",
+      "target": "file:server/controllers/qualification.controller.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/user.routes.js",
+      "target": "file:server/controllers/user.controller.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/user.routes.js",
+      "target": "file:server/middleware/auth.middleware.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/scripts/createAdmin.js",
+      "target": "file:server/models/user.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:config/config.js",
+      "target": "file:server.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

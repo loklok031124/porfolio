@@ -13,14 +13,11 @@ const qualificationSchema = new mongoose.Schema({
   },
   lastname: {
     type: String,
-    required: [true, 'Last name is required'],
     trim: true
   },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
-    trim: true,
-    lowercase: true
+  startDate: {
+    type: Date,
+    required: [true, 'Start date is required']
   },
   completion: {
     type: Date,

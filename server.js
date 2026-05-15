@@ -25,15 +25,28 @@ import userRoutes from "./server/routes/user.routes.js";
 const app = express();
 
 // CORS
-const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3001'];
+const isDev = process.env.NODE_ENV !== 'production';
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost:3001',
+].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
+    if (!origin) return callback(null, true);
+
+    const isLocalhost =
+      /^http:\/\/localhost:\d+$/.test(origin) ||
+      /^http:\/\/127\.0\.0\.1:\d+$/.test(origin);
+
+    if (isDev && isLocalhost) return callback(null, true);
+
+    if (allowedOrigins.length === 0) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+
+    return callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
 }));
@@ -127,7 +140,6 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV}`);
-  console.log(`🌐 Frontend URL: ${process.env.CLIENT_URL}`);
   console.log(`📡 API URL: http://localhost:${PORT}`);
 });
 

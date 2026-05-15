@@ -1,0 +1,603 @@
+{
+  "name": "personal-portfolio-backend",
+  "description": "A full-stack personal portfolio web application with a Node.js, Express, and MongoDB backend featuring JWT authentication, and a React 19 + Vite frontend with React Router and React Hook Form.",
+  "languages": [
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "markdown"
+  ],
+  "frameworks": [
+    "Axios",
+    "CORS",
+    "Express",
+    "JWT",
+    "Mongoose",
+    "React",
+    "React Hook Form",
+    "React Router",
+    "Vite",
+    "Vitest",
+    "bcrypt"
+  ],
+  "files": [
+    {
+      "path": ".babelrc",
+      "language": "json",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".env",
+      "language": "config",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "TestCy_2.json",
+      "language": "json",
+      "sizeLines": 789,
+      "fileCategory": "config"
+    },
+    {
+      "path": "TestCy_fixed.json",
+      "language": "json",
+      "sizeLines": 3308,
+      "fileCategory": "config"
+    },
+    {
+      "path": "client/README.md",
+      "language": "markdown",
+      "sizeLines": 17,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "client/eslint.config.js",
+      "language": "javascript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/index.html",
+      "language": "html",
+      "sizeLines": 57,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/package.json",
+      "language": "json",
+      "sizeLines": 45,
+      "fileCategory": "config"
+    },
+    {
+      "path": "client/src/App.css",
+      "language": "css",
+      "sizeLines": 43,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/src/App.jsx",
+      "language": "javascript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/api/auth.api.js",
+      "language": "javascript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/api/axios.js",
+      "language": "javascript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/api/contact.api.js",
+      "language": "javascript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/api/project.api.js",
+      "language": "javascript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/api/qualification.api.js",
+      "language": "javascript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Auth/ProtectedRoute.jsx",
+      "language": "javascript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Auth/SignIn.jsx",
+      "language": "javascript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Auth/SignUp.jsx",
+      "language": "javascript",
+      "sizeLines": 188,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Dashboard/AdminDashboard.jsx",
+      "language": "javascript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Dashboard/ContactList.jsx",
+      "language": "javascript",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Dashboard/ProjectList.jsx",
+      "language": "javascript",
+      "sizeLines": 235,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Dashboard/QualificationList.jsx",
+      "language": "javascript",
+      "sizeLines": 238,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Forms/ContactForm.jsx",
+      "language": "javascript",
+      "sizeLines": 189,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Forms/ProjectForm.jsx",
+      "language": "javascript",
+      "sizeLines": 509,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Forms/QualificationForm.jsx",
+      "language": "javascript",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Layout/Footer.jsx",
+      "language": "javascript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Layout/Header.jsx",
+      "language": "javascript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Layout/Navigation.jsx",
+      "language": "javascript",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Pages/AboutPage.jsx",
+      "language": "javascript",
+      "sizeLines": 207,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Pages/ContactPage.jsx",
+      "language": "javascript",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Pages/HomePage.jsx",
+      "language": "javascript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Pages/ProjectsPage.jsx",
+      "language": "javascript",
+      "sizeLines": 294,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/Pages/ServicesPage.jsx",
+      "language": "javascript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/components/UI/Logo.jsx",
+      "language": "javascript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/context/AuthContext.jsx",
+      "language": "javascript",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/index.css",
+      "language": "css",
+      "sizeLines": 69,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/src/main.jsx",
+      "language": "javascript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/styles/components.css",
+      "language": "css",
+      "sizeLines": 344,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/src/styles/index.css",
+      "language": "css",
+      "sizeLines": 146,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/src/styles/pages.css",
+      "language": "css",
+      "sizeLines": 662,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/src/test/ContactForm.test.jsx",
+      "language": "javascript",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/src/test/setup.js",
+      "language": "javascript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/vite.config.js",
+      "language": "javascript",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "config/config.js",
+      "language": "javascript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "cypress.config.js",
+      "language": "javascript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 54,
+      "fileCategory": "config"
+    },
+    {
+      "path": "server.js",
+      "language": "javascript",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/assets-router.js",
+      "language": "javascript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/controllers/auth.controller.js",
+      "language": "javascript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/controllers/contact.controller.js",
+      "language": "javascript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/controllers/error.controller.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/controllers/project.controller.js",
+      "language": "javascript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/controllers/qualification.controller.js",
+      "language": "javascript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/controllers/user.controller.js",
+      "language": "javascript",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/express.js",
+      "language": "javascript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/helpers/dbErrorHandler.js",
+      "language": "javascript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/middleware/auth.middleware.js",
+      "language": "javascript",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/models/contact.model.js",
+      "language": "javascript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/models/project.model.js",
+      "language": "javascript",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/models/qualification.model.js",
+      "language": "javascript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/models/user.model.js",
+      "language": "javascript",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/auth.routes.js",
+      "language": "javascript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/contact.routes.js",
+      "language": "javascript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/project.routes.js",
+      "language": "javascript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/qualification.routes.js",
+      "language": "javascript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/user.routes.js",
+      "language": "javascript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/scripts/createAdmin.js",
+      "language": "javascript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vercel.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
+    }
+  ],
+  "totalFiles": 68,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "importMap": {
+    ".babelrc": [],
+    ".env": [],
+    "TestCy_2.json": [],
+    "TestCy_fixed.json": [],
+    "client/README.md": [],
+    "client/eslint.config.js": [],
+    "client/index.html": [],
+    "client/package.json": [],
+    "client/src/App.css": [],
+    "client/src/App.jsx": [
+      "client/src/context/AuthContext.jsx",
+      "client/src/components/Layout/Header.jsx",
+      "client/src/components/Layout/Footer.jsx"
+    ],
+    "client/src/api/auth.api.js": [
+      "client/src/api/axios.js"
+    ],
+    "client/src/api/axios.js": [],
+    "client/src/api/contact.api.js": [
+      "client/src/api/axios.js"
+    ],
+    "client/src/api/project.api.js": [
+      "client/src/api/axios.js"
+    ],
+    "client/src/api/qualification.api.js": [
+      "client/src/api/axios.js"
+    ],
+    "client/src/components/Auth/ProtectedRoute.jsx": [
+      "client/src/context/AuthContext.jsx"
+    ],
+    "client/src/components/Auth/SignIn.jsx": [
+      "client/src/context/AuthContext.jsx"
+    ],
+    "client/src/components/Auth/SignUp.jsx": [
+      "client/src/context/AuthContext.jsx"
+    ],
+    "client/src/components/Dashboard/AdminDashboard.jsx": [
+      "client/src/context/AuthContext.jsx",
+      "client/src/components/Dashboard/ContactList.jsx",
+      "client/src/components/Dashboard/ProjectList.jsx",
+      "client/src/components/Dashboard/QualificationList.jsx"
+    ],
+    "client/src/components/Dashboard/ContactList.jsx": [
+      "client/src/api/contact.api.js",
+      "client/src/context/AuthContext.jsx"
+    ],
+    "client/src/components/Dashboard/ProjectList.jsx": [
+      "client/src/api/project.api.js",
+      "client/src/context/AuthContext.jsx",
+      "client/src/components/Forms/ProjectForm.jsx"
+    ],
+    "client/src/components/Dashboard/QualificationList.jsx": [
+      "client/src/api/qualification.api.js",
+      "client/src/context/AuthContext.jsx",
+      "client/src/components/Forms/QualificationForm.jsx"
+    ],
+    "client/src/components/Forms/ContactForm.jsx": [
+      "client/src/api/contact.api.js"
+    ],
+    "client/src/components/Forms/ProjectForm.jsx": [
+      "client/src/api/project.api.js"
+    ],
+    "client/src/components/Forms/QualificationForm.jsx": [
+      "client/src/api/qualification.api.js"
+    ],
+    "client/src/components/Layout/Footer.jsx": [],
+    "client/src/components/Layout/Header.jsx": [
+      "client/src/components/UI/Logo.jsx",
+      "client/src/components/Layout/Navigation.jsx"
+    ],
+    "client/src/components/Layout/Navigation.jsx": [
+      "client/src/context/AuthContext.jsx"
+    ],
+    "client/src/components/Pages/AboutPage.jsx": [
+      "client/src/api/qualification.api.js"
+    ],
+    "client/src/components/Pages/ContactPage.jsx": [
+      "client/src/components/Forms/ContactForm.jsx"
+    ],
+    "client/src/components/Pages/HomePage.jsx": [],
+    "client/src/components/Pages/ProjectsPage.jsx": [
+      "client/src/api/project.api.js"
+    ],
+    "client/src/components/Pages/ServicesPage.jsx": [],
+    "client/src/components/UI/Logo.jsx": [],
+    "client/src/context/AuthContext.jsx": [
+      "client/src/api/auth.api.js"
+    ],
+    "client/src/index.css": [],
+    "client/src/main.jsx": [
+      "client/src/App.jsx",
+      "client/src/styles/index.css",
+      "client/src/styles/components.css",
+      "client/src/styles/pages.css"
+    ],
+    "client/src/styles/components.css": [],
+    "client/src/styles/index.css": [],
+    "client/src/styles/pages.css": [],
+    "client/src/test/ContactForm.test.jsx": [
+      "client/src/components/Forms/ContactForm.jsx"
+    ],
+    "client/src/test/setup.js": [],
+    "client/vite.config.js": [],
+    "config/config.js": [],
+    "cypress.config.js": [],
+    "package.json": [],
+    "server.js": [
+      "server/routes/contact.routes.js",
+      "server/routes/project.routes.js",
+      "server/routes/qualification.routes.js",
+      "server/routes/auth.routes.js",
+      "config/config.js",
+      "server/routes/user.routes.js"
+    ],
+    "server/assets-router.js": [],
+    "server/controllers/auth.controller.js": [
+      "server/models/user.model.js"
+    ],
+    "server/controllers/contact.controller.js": [
+      "server/models/contact.model.js"
+    ],
+    "server/controllers/error.controller.js": [],
+    "server/controllers/project.controller.js": [
+      "server/models/project.model.js"
+    ],
+    "server/controllers/qualification.controller.js": [
+      "server/models/qualification.model.js"
+    ],
+    "server/controllers/user.controller.js": [
+      "server/models/user.model.js"
+    ],
+    "server/express.js": [
+      "server/routes/user.routes.js",
+      "server/routes/auth.routes.js"
+    ],
+    "server/helpers/dbErrorHandler.js": [],
+    "server/middleware/auth.middleware.js": [
+      "server/models/user.model.js"
+    ],
+    "server/models/contact.model.js": [],
+    "server/models/project.model.js": [],
+    "server/models/qualification.model.js": [],
+    "server/models/user.model.js": [],
+    "server/routes/auth.routes.js": [
+      "server/controllers/auth.controller.js",
+      "server/middleware/auth.middleware.js"
+    ],
+    "server/routes/contact.routes.js": [
+      "server/controllers/contact.controller.js"
+    ],
+    "server/routes/project.routes.js": [
+      "server/controllers/project.controller.js"
+    ],
+    "server/routes/qualification.routes.js": [
+      "server/controllers/qualification.controller.js"
+    ],
+    "server/routes/user.routes.js": [
+      "server/controllers/user.controller.js",
+      "server/middleware/auth.middleware.js"
+    ],
+    "server/scripts/createAdmin.js": [
+      "server/models/user.model.js"
+    ],
+    "vercel.json": []
+  }
+}

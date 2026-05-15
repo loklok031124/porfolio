@@ -10,52 +10,6 @@ const generateToken = (userId) => {
   );
 };
 
-export const signup = async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({
-        success: false,
-        message: 'User already exists with this email'
-      });
-    }
-
-    // Create new user
-    const user = await User.create({
-      name,
-      email,
-      password
-    });
-
-    // Generate token
-    const token = generateToken(user._id);
-
-    // Set cookie
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    });
-
-    res.status(201).json({
-      success: true,
-      message: 'User registered successfully',
-      data: {
-        user: user,
-        token: token
-      }
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Error during registration',
-      error: error.message
-    });
-  }
-};
-
 export const signin = async (req, res) => {
   try {
     const { email, password } = req.body;

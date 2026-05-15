@@ -56,26 +56,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signup = async (userData) => {
-    try {
-      const response = await authAPI.signup(userData);
-      const { user, token } = response.data;
-      
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      
-      setUser(user);
-      setIsAuthenticated(true);
-      
-      return { success: true, user };
-    } catch (error) {
-      return { 
-        success: false, 
-        message: error.response?.data?.message || 'Registration failed' 
-      };
-    }
-  };
-
   const signout = async () => {
     try {
       await authAPI.signout();
@@ -99,7 +79,6 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated,
     isAdmin,
     signin,
-    signup,
     signout,
     checkAuth
   };

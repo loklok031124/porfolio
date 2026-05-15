@@ -10,7 +10,6 @@ const AboutPage = lazy(() => import('./components/Pages/AboutPage'));
 const ProjectsPage = lazy(() => import('./components/Pages/ProjectsPage'));
 const ServicesPage = lazy(() => import('./components/Pages/ServicesPage'));
 const ContactPage = lazy(() => import('./components/Pages/ContactPage'));
-const SignUp = lazy(() => import('./components/Auth/SignUp'));
 const SignIn = lazy(() => import('./components/Auth/SignIn'));
 const AdminDashboard = lazy(() => import('./components/Dashboard/AdminDashboard'));
 const ProtectedRoute = lazy(() => import('./components/Auth/ProtectedRoute'));
@@ -41,7 +40,6 @@ function App() {
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/signup" element={<SignUp />} />
               <Route path="/signin" element={<SignIn />} />
               <Route 
                 path="/admin/dashboard" 

@@ -1,6 +1,5 @@
 import express from 'express';
 import {
-  signup,
   signin,
   signout,
   getCurrentUser
@@ -8,9 +7,6 @@ import {
 import { requireAuth } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
-
-// POST /api/auth/signup - Register new user
-router.post('/signup', signup);
 
 // POST /api/auth/signin - Login user
 router.post('/signin', signin);

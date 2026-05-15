@@ -75,30 +75,42 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: opacity 0.3s ease;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
 
 .logo:hover {
-  opacity: 0.8;
+  transform: scale(1.05);
 }
 
-.logo-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  border-radius: 0.5rem;
+.logo-icon-stroke {
+  color: #3b82f6;
+  transition: color 0.2s ease;
+}
+
+.logo:hover .logo-icon-stroke {
+  color: #8b5cf6;
+}
+
+.logo-command {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
+  gap: 0.35rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
   font-weight: 700;
-  font-size: 1.125rem;
 }
 
-.logo-text {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1f2937;
+.logo-prompt {
+  color: #8b5cf6;
+}
+
+.logo-cmd-text {
+  color: #3b82f6;
+}
+
+.logo-cursor {
+  color: #3b82f6;
 }
 
 /* Navigation Styles */
